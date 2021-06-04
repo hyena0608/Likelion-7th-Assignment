@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등록페이지</title>
+</head>
+<body>
+    <h1>Write Your Information</h1>
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        <label for="name">이름 :</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="age">나이 :</label>
+        <input type="number" name="age" id="age" min="10" max="99" step="1">
+        <br>
+        <label for="email">이메일 :</label>
+        <input type="email" name="email" id="email" placeholder="id@host">
+        <br>
+        <label for="introduce">자기소개 :</label>
+        <textarea name="introduce" id="introduce" cols="30" rows="10"></textarea>
+        <input type="submit" value="">
+    </form>
+</body>
+</html>
