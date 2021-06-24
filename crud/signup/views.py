@@ -18,6 +18,7 @@ def create(req):
     new_person.pub_date = timezone.now()
     new_person.email = req.POST['email']
     new_person.introduce = req.POST['introduce']
+    new_person.image = req.FILES['image']
     new_person.save()
     return redirect('detail', str(new_person.id))
 
@@ -35,6 +36,7 @@ def update(req, id):
     update_person.age = req.POST['age']
     update_person.email = req.POST['email']
     update_person.introduce = req.POST['introduce']
+    update_person.image = req.FILES['image']
     update_person.save()
     return redirect('detail', str(update_person.id))
 

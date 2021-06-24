@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="kor">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입 관리페이지</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>Signup Project</h1>
     <a href="{% url 'new' %}">Write Your information</a>
 
     {% for person in people %}
-    <div>
-        <h3>
-            {{person.name}}
-        </h3>
-        {{person.pub_date}}
-        <br>
-        {{person.age}}
-        <br>
-        {{person.email}}
-        <br>
-        {{person.summary}}
-        <a href="{% url 'detail' person.id %}">...more</a>
-    </div>
+        <div>
+            <p>
+                <p><img src="{{person.image.url}}" alt="" width="200" height="170"></p>
+            </p>
+            <h3>
+                {{person.name}}
+            </h3>
+            {{person.pub_date}}
+            <br>
+            {{person.age}}
+            <br>
+            {{person.email}}
+            <br>
+            {{person.summary}}
+            <a href="{% url 'detail' person.id %}">...more</a>
+        </div>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}

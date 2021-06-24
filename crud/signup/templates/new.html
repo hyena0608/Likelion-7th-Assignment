@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="kor">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>등록페이지</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <h1>Write Your Information</h1>
-    <form action="{% url 'create' %}" method="POST">
+    <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="name">이름 :</label>
-        <input type="text" name="name" id="name">
-        <br>
-        <label for="age">나이 :</label>
-        <input type="number" name="age" id="age" min="10" max="99" step="1">
-        <br>
-        <label for="email">이메일 :</label>
-        <input type="email" name="email" id="email" placeholder="id@host">
-        <br>
-        <label for="introduce">자기소개 :</label>
-        <textarea name="introduce" id="introduce" cols="30" rows="10"></textarea>
-        <input type="submit" value="">
+        <table border = "0">
+            <tr>
+                <td><label for="name">이름 :</label></td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="age">나이 :</label></td>
+                <td><input type="number" name="age" id="age" min="10" max="99" step="1"></td>
+            </tr>
+            <tr>
+                <td><label for="email">이메일 :</label></td>
+                <td><input type="email" name="email" id="email" placeholder="id@host"></td>
+            </tr>
+            <tr>
+                <td><label for="introduce">자기소개 :</label></td>
+                <td><textarea name="introduce" id="introduce" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td><lable for="image">사진 :</lable></td>
+                <td><input type="file" name="image" id="image"></td>
+            </tr>
+        </table>    
+        <input type="submit" value="등록">
     </form>
-</body>
-</html>
+{% endblock %}

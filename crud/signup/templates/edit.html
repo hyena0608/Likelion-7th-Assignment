@@ -1,10 +1,25 @@
-<h1>update</h1>
+{% extends 'base.html' %}
+{% block content %}
+    <h1>update</h1>
 
-<form action="{% url 'update' person.id %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="name" value="{{person.name}}">
-    <input type="number" name="age" min="10" max="99" step="1" id="" value="{{person.age}}">
-    <input type="email" name="email" placeholder="id@host" value="{{person.email}}">
-    <textarea name="introduce" id="" cols="30" rows="10">{{person.introduce}}</textarea>
-    <input type="submit">
-</form>
+    <form action="{% url 'update' person.id %}" method="post">
+        {% csrf_token %}
+        <p><img src="{{person.image.url}}" alt="" width="200" height="170"></p>
+        <label for="name">이름 :</label>
+        <input type="text" name="name" value="{{person.name}}">
+        <br>
+        <label for="age">나이 :</label>
+        <input type="number" name="age" min="10" max="99" step="1" id="" value="{{person.age}}">
+        <br>
+        <label for="email">이메일 :</label>
+        <input type="email" name="email" placeholder="id@host" value="{{person.email}}">
+        <br>
+        <label for="introduce">자기소개 :</label>
+        <textarea name="introduce" id="" cols="30" rows="10">{{person.introduce}}</textarea>
+        <br>
+        <lable for="image">사진 :</lable>
+        <input type="file" name="image" id="image">
+        <br>
+        <input type="submit" value="수정하기">
+    </form>
+{% endblock %}
